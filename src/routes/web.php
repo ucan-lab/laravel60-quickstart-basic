@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  * タスクダッシュボード表示
  */
 Route::get('/', function () {
-    //
+    return view('tasks');
 });
 
 /**
