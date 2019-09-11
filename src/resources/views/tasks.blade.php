@@ -10,13 +10,13 @@
 
                 <div class="panel-body">
                     <!-- バリデーションエラーの表示 -->
-                @include('common.errors')
+                    @include('common.errors')
 
-                <!-- 新タスクフォーム -->
+                    <!-- 新タスクフォーム -->
                     <form action="{{ url('task')}}" method="POST" class="form-horizontal">
-                    @csrf
+                        @csrf
 
-                    <!-- タスク名 -->
+                        <!-- タスク名 -->
                         <div class="form-group">
                             <label for="task-name" class="col-sm-3 control-label">タスク</label>
 
@@ -37,7 +37,38 @@
                 </div>
             </div>
 
-            <!-- TODO: 現在のタスク -->
+            <!-- 現在のタスク -->
+            @if (count($tasks) > 0)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        現在のタスク
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped task-table">
+                            <!-- テーブルヘッダ -->
+                            <thead>
+                            <tr>
+                                <th>タスク</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <!-- テーブル本体 -->
+                            <tbody>
+                            @foreach ($tasks as $task)
+                                <tr>
+                                    <td class="table-text">
+                                        <div>{{ $task->name }}</div>
+                                    </td>
+                                    <!-- TODO: 削除ボタン -->
+                                    <td>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
